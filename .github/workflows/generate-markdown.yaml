@@ -24,7 +24,7 @@ jobs:
     - name: Install jsonschema2md package
       run: npm install -g @adobe/jsonschema2md
     
-    - name: Run jsonschema2md package
+    - name: Run jsonschema2md package to generate markdown
       run: jsonschema2md -n -d schema -o docs -x -
     
     - name: Auto-Commit generate-markdown
