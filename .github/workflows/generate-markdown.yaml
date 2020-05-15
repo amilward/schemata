@@ -19,7 +19,7 @@ jobs:
     - name: Set up NodeJS
       uses: actions/setup-node@v1
       with:
-        node-version: '13.10.8'
+        node-version: '13.x'
     
     - name: Install jsonschema2md package
       run: npm install -g @adobe/jsonschema2md
