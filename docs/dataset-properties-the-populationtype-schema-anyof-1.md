@@ -1,4 +1,4 @@
-# Untitled array in Dataset Schema Schema
+# Untitled array in HDR UK Dataset Schema
 
 ```txt
 #/properties/populationType#/properties/populationType/anyOf/1

@@ -20,8 +20,8 @@ merged type ([The controlledVocabulary schema](dataset-properties-the-controlled
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-the-controlledvocabulary-schema-anyof-0.md "check type definition")
--   [Untitled array in Dataset Schema](dataset-properties-the-controlledvocabulary-schema-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-controlledvocabulary-schema-anyof-0.md "check type definition")
+-   [Untitled array in HDR UK Dataset](dataset-properties-the-controlledvocabulary-schema-anyof-1.md "check type definition")
 
 ## controlledVocabulary Examples
 

@@ -17,5 +17,5 @@ merged type ([The dataProcessor schema](dataset-properties-the-dataprocessor-sch
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-the-dataprocessor-schema-anyof-0.md "check type definition")
--   [Untitled string in Dataset Schema](dataset-properties-the-dataprocessor-schema-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-dataprocessor-schema-anyof-0.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-dataprocessor-schema-anyof-1.md "check type definition")

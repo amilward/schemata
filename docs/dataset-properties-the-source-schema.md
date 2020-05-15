@@ -20,5 +20,5 @@ merged type ([The source schema](dataset-properties-the-source-schema.md))
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-the-source-schema-anyof-0.md "check type definition")
--   [Untitled array in Dataset Schema](dataset-properties-the-source-schema-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-source-schema-anyof-0.md "check type definition")
+-   [Untitled array in HDR UK Dataset](dataset-properties-the-source-schema-anyof-1.md "check type definition")

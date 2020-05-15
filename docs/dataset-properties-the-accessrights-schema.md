@@ -20,6 +20,6 @@ merged type ([The accessRights schema](dataset-properties-the-accessrights-schem
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-the-accessrights-schema-anyof-0.md "check type definition")
--   [Untitled string in Dataset Schema](dataset-properties-the-accessrights-schema-anyof-1.md "check type definition")
--   [Untitled array in Dataset Schema](dataset-properties-the-accessrights-schema-anyof-2.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-accessrights-schema-anyof-0.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-accessrights-schema-anyof-1.md "check type definition")
+-   [Untitled array in HDR UK Dataset](dataset-properties-the-accessrights-schema-anyof-2.md "check type definition")

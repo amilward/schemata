@@ -17,5 +17,5 @@ If applicable, please indicate if there is the opportunity to link this dataset 
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-the-linkageopportunity-schema-anyof-0.md "check type definition")
--   [Untitled string in Dataset Schema](dataset-properties-the-linkageopportunity-schema-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-linkageopportunity-schema-anyof-0.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-linkageopportunity-schema-anyof-1.md "check type definition")

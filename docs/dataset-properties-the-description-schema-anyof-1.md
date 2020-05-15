@@ -1,4 +1,4 @@
-# Untitled string in Dataset Schema Schema
+# Untitled string in HDR UK Dataset Schema
 
 ```txt
 #/properties/description#/properties/description/anyOf/1

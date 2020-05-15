@@ -17,5 +17,5 @@ merged type ([The description schema](dataset-properties-the-description-schema.
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-the-description-schema-anyof-0.md "check type definition")
--   [Untitled string in Dataset Schema](dataset-properties-the-description-schema-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-description-schema-anyof-0.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-description-schema-anyof-1.md "check type definition")

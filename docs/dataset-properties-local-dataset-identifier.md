@@ -20,5 +20,5 @@ merged type ([Local dataset identifier](dataset-properties-local-dataset-identif
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-local-dataset-identifier-anyof-0.md "check type definition")
--   [Untitled array in Dataset Schema](dataset-properties-local-dataset-identifier-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-local-dataset-identifier-anyof-0.md "check type definition")
+-   [Untitled array in HDR UK Dataset](dataset-properties-local-dataset-identifier-anyof-1.md "check type definition")

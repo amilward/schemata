@@ -17,5 +17,5 @@ merged type ([Digital Object Identifier](dataset-properties-digital-object-ident
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-digital-object-identifier-anyof-0.md "check type definition")
--   [Untitled string in Dataset Schema](dataset-properties-digital-object-identifier-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-digital-object-identifier-anyof-0.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-digital-object-identifier-anyof-1.md "check type definition")

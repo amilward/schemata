@@ -20,5 +20,5 @@ merged type ([The usageResrictions schema](dataset-properties-the-usageresrictio
 
 any of
 
--   [Untitled string in Dataset Schema](dataset-properties-the-usageresrictions-schema-anyof-0.md "check type definition")
--   [Untitled string in Dataset Schema](dataset-properties-the-usageresrictions-schema-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-usageresrictions-schema-anyof-0.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-usageresrictions-schema-anyof-1.md "check type definition")
