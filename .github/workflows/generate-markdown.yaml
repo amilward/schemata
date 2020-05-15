@@ -29,9 +29,9 @@ jobs:
     
     - name: Auto-Commit generate-markdown
       uses: stefanzweifel/git-auto-commit-action@v4.1.6
-        with:
-          commit_message: Commit generated markdown
-          branch: ${{ github.head_ref }}
-          commit_user_name: Susheel Varma
-          commit_user_email: susheel.varma@hdruk.ac.uk
-          commit_author: Susheel Varma <susheel.varma@hdruk.ac.uk>
+      with:
+        commit_message: Commit generated markdown
+        branch: ${{ github.head_ref }}
+        commit_user_name: Susheel Varma
+        commit_user_email: susheel.varma@hdruk.ac.uk
+        commit_author: Susheel Varma <susheel.varma@hdruk.ac.uk>
