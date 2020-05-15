@@ -1,0 +1,37 @@
+name: generate-markdown
+
+on:
+  schedule:
+  # Run at 0 minute past every 12th hour
+    - cron:  '0 */12 * * *'
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  generate-markdown:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up NodeJS
+      uses: actions/setup-node@v1
+      with:
+        node-version: '13.10.8'
+    
+    - name: Install jsonschema2md package
+      run: npm install -g @adobe/jsonschema2md
+    
+    - name: Run jsonschema2md package
+      run: jsonschema2md -n -d schema -o docs -x -
+    
+    - name: Auto-Commit generate-markdown
+      uses: stefanzweifel/git-auto-commit-action@v4.1.6
+        with:
+          commit_message: Commit generated markdown
+          branch: ${{ github.head_ref }}
+          commit_user_name: Susheel Varma
+          commit_user_email: susheel.varma@hdruk.ac.uk
+          commit_author: Susheel Varma <susheel.varma@hdruk.ac.uk>
