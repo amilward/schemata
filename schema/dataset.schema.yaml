@@ -25,7 +25,7 @@ required:
 - format
 - creator
 - doi
-- usageResrictions
+- usageRestrictions
 additionalProperties: true
 properties:
   id:
@@ -262,8 +262,8 @@ properties:
     title: The accessEnvironment schema
     description: Please provide a brief description of the data access environment
       that is currently available to researchers.
-  usageResrictions:
-    "$id": "#/properties/usageResrictions"
+  usageRestrictions:
+    "$id": "#/properties/usageRestrictions"
     "$comment": 'FIXME: Missing from Onboarding tool, so not captured'
     anyOf:
     - type: string
@@ -272,7 +272,7 @@ properties:
     - type: string
       enum:
       - In Progress
-    title: The usageResrictions schema
+    title: The usageRestrictions schema
     description: Please provide a description of any usage restrictions of key terms
       and conditions under which access to the dataset is provided.
   dataController:
