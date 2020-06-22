@@ -13,6 +13,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+    - uses: fabasoad/yaml-json-xml-converter-action@v1.0.0
+      id: yaml2json
+      with:
+        path: 'schema/dataset.schema.yaml'
+        from: 'yaml'
+        to: 'json'
+    - name: Output yaml2json result
+      run: echo "${{ steps.yaml2json.outputs.data }} > schema/dataset.schema.json"
     - name: Set up NodeJS
       uses: actions/setup-node@v1
       with:
