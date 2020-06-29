@@ -2,9 +2,13 @@ name: generate-markdown
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - develop
   pull_request:
-    branches: [ master ]
+    branches:
+      - master
+      - develop
 
 jobs:
   generate-markdown:
@@ -13,11 +17,13 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - uses: ruby/setup-ruby@v1
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: 2.6
-    - name: Convert Yaml to JSON
-    - run: ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < schema/dataset.schema.yaml > schema/dataset.json
+    - name: Convert Dataset Yaml to JSON
+      run: ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < schema/dataset.schema.yaml > schema/dataset.json
+    
     - name: Set up NodeJS
       uses: actions/setup-node@v1
       with:
