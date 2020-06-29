@@ -22,7 +22,7 @@ jobs:
       with:
         ruby-version: 2.6
     - name: Convert Dataset Yaml to JSON
-      run: ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < schema/dataset.schema.yaml > schema/dataset.schema.json
+      run: ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < schema/dataset/dataset.schema.yaml > schema/dataset/dataset.schema.json
     
     - name: Set up NodeJS
       uses: actions/setup-node@v1
@@ -33,7 +33,7 @@ jobs:
       run: npm install -g @adobe/jsonschema2md
     
     - name: Run jsonschema2md package to generate markdown
-      run: jsonschema2md -n -d schema -o docs -x -
+      run: jsonschema2md -n -d schema/dataset -o docs/dataset -x -
     
     - name: Auto-Commit generate-markdown
       uses: stefanzweifel/git-auto-commit-action@v4.1.6
