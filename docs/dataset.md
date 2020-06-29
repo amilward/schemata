@@ -36,7 +36,7 @@ HDR UK Dataset Schema
 | [accessRequestCost](#accessRequestCost)                   | `string` | Required | cannot be null | [HDR UK Dataset](dataset-properties-the-accessrequestcost-schema.md "\#/properties/accessRequestCost#/properties/accessRequestCost")                            |
 | [accessRequestDuration](#accessRequestDuration)           | `string` | Optional | cannot be null | [HDR UK Dataset](dataset-properties-the-accessrequestduration-schema.md "\#/properties/accessRequestDuration#/properties/accessRequestDuration")                |
 | [accessEnvironment](#accessEnvironment)                   | `string` | Optional | cannot be null | [HDR UK Dataset](dataset-properties-the-accessenvironment-schema.md "\#/properties/accessEnvironment#/properties/accessEnvironment")                            |
-| [usageResrictions](#usageResrictions)                     | Merged   | Required | cannot be null | [HDR UK Dataset](dataset-properties-the-usageresrictions-schema.md "\#/properties/usageResrictions#/properties/usageResrictions")                               |
+| [usageRestrictions](#usageRestrictions)                   | Merged   | Required | cannot be null | [HDR UK Dataset](dataset-properties-the-usagerestrictions-schema.md "\#/properties/usageRestrictions#/properties/usageRestrictions")                            |
 | [dataController](#dataController)                         | `string` | Required | cannot be null | [HDR UK Dataset](dataset-properties-the-datacontroller-schema.md "\#/properties/dataController#/properties/dataController")                                     |
 | [dataProcessor](#dataProcessor)                           | Merged   | Optional | cannot be null | [HDR UK Dataset](dataset-properties-the-dataprocessor-schema.md "\#/properties/dataProcessor#/properties/dataProcessor")                                        |
 | [license](#license)                                       | `string` | Required | cannot be null | [HDR UK Dataset](dataset-properties-the-license-schema.md "\#/properties/license#/properties/license")                                                          |
@@ -456,7 +456,7 @@ Please provide a brief description of the data access environment that is curren
 
 **minimum length**: the minimum number of characters for this string is: `5`
 
-## usageResrictions
+## usageRestrictions
 
 Please provide a description of any usage restrictions of key terms and conditions under which access to the dataset is provided.
 
@@ -464,21 +464,21 @@ Please provide a description of any usage restrictions of key terms and conditio
 > FIXME: Missing from Onboarding tool, so not captured
 >
 
-`usageResrictions`
+`usageRestrictions`
 
 -   is required
--   Type: merged type ([The usageResrictions schema](dataset-properties-the-usageresrictions-schema.md))
+-   Type: merged type ([The usageRestrictions schema](dataset-properties-the-usagerestrictions-schema.md))
 -   cannot be null
--   defined in: [HDR UK Dataset](dataset-properties-the-usageresrictions-schema.md "\#/properties/usageResrictions#/properties/usageResrictions")
+-   defined in: [HDR UK Dataset](dataset-properties-the-usagerestrictions-schema.md "\#/properties/usageRestrictions#/properties/usageRestrictions")
 
-### usageResrictions Type
+### usageRestrictions Type
 
-merged type ([The usageResrictions schema](dataset-properties-the-usageresrictions-schema.md))
+merged type ([The usageRestrictions schema](dataset-properties-the-usagerestrictions-schema.md))
 
 any of
 
--   [Untitled string in HDR UK Dataset](dataset-properties-the-usageresrictions-schema-anyof-0.md "check type definition")
--   [Untitled string in HDR UK Dataset](dataset-properties-the-usageresrictions-schema-anyof-1.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-usagerestrictions-schema-anyof-0.md "check type definition")
+-   [Untitled string in HDR UK Dataset](dataset-properties-the-usagerestrictions-schema-anyof-1.md "check type definition")
 
 ## dataController
 
