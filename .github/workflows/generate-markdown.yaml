@@ -22,7 +22,7 @@ jobs:
       with:
         ruby-version: 2.6
     - name: Convert Dataset Yaml to JSON
-    - run: ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < schema/dataset.schema.yaml > schema/dataset.json
+      run: ruby -ryaml -rjson -e 'puts JSON.pretty_generate(YAML.load(ARGF))' < schema/dataset.schema.yaml > schema/dataset.json
     
     - name: Set up NodeJS
       uses: actions/setup-node@v1
