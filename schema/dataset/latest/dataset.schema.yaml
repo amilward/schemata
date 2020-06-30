@@ -43,7 +43,8 @@ properties:
     "$id": "#/properties/identifier"
     title: Local Dataset Identifiers
     description: Local dataset identifier
-    allOf:
+    anyOf:
+    - "$ref": "#/definitions/commaSeperatedValues"
     - type: array
       contains:
         type: string
