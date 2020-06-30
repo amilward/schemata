@@ -37,11 +37,6 @@ jobs:
     
     - name: Auto-Commit generate-markdown
       uses: stefanzweifel/git-auto-commit-action@v4.1.6
-      if:
-        contains('
-          refs/heads/master
-          refs/heads/develop
-        ', github.ref)
       with:
         commit_message: Commit generated markdown
         branch: ${{ github.head_ref }}
