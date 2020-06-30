@@ -34,7 +34,7 @@ additionalProperties: true
 properties:
   id:
     "$id": "#/properties/id"
-    title: Dataset Identifier
+    title: Identifier
     description: Dataset identifier (UUIDv4 format)
     allOf:
     - "$ref": "#/definitions/uuidv4"
@@ -67,7 +67,7 @@ properties:
   
   abstract:
     "$id": "#/properties/abstract"
-    "$comment": dct:abstract
+    "$comment": "dct:abstract"
     title: Abstract
     description: 'Provide a clear and brief descriptive signpost for researchers
         who are searching for data that may be relevant to their research. The abstract
