@@ -614,6 +614,9 @@ definitions:
     pattern: "\\d{1,3}-\\d{1,3}"
   
   semver:
+    title: Semantic Version
+    description: Semantic versioning of the using a dotted numeric format 
+      MAJOR.MINOR.PATCH
     type: string
     pattern: "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$"
   
@@ -621,10 +624,15 @@ definitions:
     type: array
     items:
       type: object
+      required:
+      - version
+      - url
       properties:
         version:
+          description: Semantic Version
           "$ref": "#/definitions/semver"
         url:
+          description: URL endpoint to obtain the version
           type: string
           format: uri
   
