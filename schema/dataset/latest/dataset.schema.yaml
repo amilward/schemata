@@ -21,7 +21,6 @@ required:
 - jurisdiction
 - populationType
 - statisticalPopulation
-- physicalSampleAvailability
 - keywords
 - conformsTo
 - language
@@ -100,6 +99,14 @@ properties:
     description: An explanation about the purpose of this instance.
     type: string
     format: email
+  
+  coverage:
+    title: Coverage
+    description: This information includes attributes for geographical and temporal
+      coverage, cohort details etc. to enable a deeper understanding of the dataset
+      content so that researchers can make decisions about the relevance of the
+      underlying data.
+    "$ref": "#/definitions/coverage"
   
   accessRights:
     "$id": "#/properties/accessRights"
