@@ -89,7 +89,7 @@ properties:
       However, in some cases this will be different i.e. Tissue Directory are an HDR
       UK Gateway organisation but coordinate activities across a number of data publishers
       i.e. Cambridge Blood and Stem Cell Biobank.
-    "$ref": "#/definitions/controlledVocabulary"
+    "$ref": "#/definitions/publisher"
   
   contactPoint:
     "$id": "#/properties/contactPoint"
