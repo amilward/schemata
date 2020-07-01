@@ -619,7 +619,9 @@ definitions:
     properties:
       id:
         title: Organisation Identifier
-        description: "Please provide a Grid.ac identifier (see https://www.grid.ac/institutes) for your organisation. If your organisation does not have a Grid.ac identifier please use the “suggest and institute” function here: https://www.grid.ac/institutes#"
+        description: "Please provide a Grid.ac identifier (see https://www.grid.ac/institutes) 
+          for your organisation. If your organisation does not have a Grid.ac identifier please 
+          use the “suggest and institute” function here: https://www.grid.ac/institutes#"
         type: string
         format: uri
       name:
@@ -628,7 +630,8 @@ definitions:
         "$ref": "#/definitions/eightyCharacters"
       logo:
         title: Organisation Logo
-        description: Please provide a logo associated with the Gateway Organisation using a valid URL. The following formats will be accepted .jpg, .png or .svg.
+        description: Please provide a logo associated with the Gateway Organisation using a 
+          valid URL. The following formats will be accepted .jpg, .png or .svg.
         type: string
         format: uri
       about:
@@ -676,7 +679,10 @@ definitions:
           format: uri
       deliveryLeadTime:
         title: Delivery Lead Time
-        description: "Please provide an indication of the typical processing times based on the types of requests typically received. Note: This value will be used as default access request duration for all datasets submitted by the organisation. However, there will be the opportunity to overwrite his value for each dataset."
+        description: "Please provide an indication of the typical processing times based 
+          on the types of requests typically received. Note: This value will be used as 
+          default access request duration for all datasets submitted by the organisation. 
+          However, there will be the opportunity to overwrite his value for each dataset."
         type: string
         enum:
         - '>1 WEEK'
@@ -688,11 +694,22 @@ definitions:
         - 'OTHER'
       accessService:
         title: Organisation Access Service
-        description: "Please provide a brief description of the data access environment that is currently available to researchers. If no environment is currently available, please indicate the current plans and timelines when the data will be made available through an access environment or process. Note: This value will be used as default access environment for all datasets submitted by the organisation. However, there will be the opportunity to overwrite his value for each dataset"
+        description: "Please provide a brief description of the data access environment 
+          that is currently available to researchers. If no environment is currently 
+          available, please indicate the current plans and timelines when the data will be 
+          made available through an access environment or process. Note: This value will be 
+          used as default access environment for all datasets submitted by the organisation. 
+          However, there will be the opportunity to overwrite his value for each dataset"
         "$ref": "#/definitions/longDescription"
       dataUseLimitation:
         title: Data Use Limitation
-        description: "Please provide an indication of consent permissions for datasets and/or materials, and relates to the purposes for which datasets and/or material might be removed, stored or used. Notes: where there are existing data-sharing arrangements such as the HDR UK HUB data sharing agreement or the NIHR HIC data sharing agreement this should be indicated within access rights. This value will be used as terms for all datasets submitted by the organisation. However, there will be the opportunity to overwrite this value for each dataset."
+        description: "Please provide an indication of consent permissions for datasets and/or 
+          materials, and relates to the purposes for which datasets and/or material might be 
+          removed, stored or used. Notes: where there are existing data-sharing arrangements 
+          such as the HDR UK HUB data sharing agreement or the NIHR HIC data sharing agreement 
+          this should be indicated within access rights. This value will be used as terms for 
+          all datasets submitted by the organisation. However, there will be the opportunity 
+          to overwrite this value for each dataset."
         type: string
         enum:
         - 'GENERAL RESEARCH USE'
@@ -704,7 +721,10 @@ definitions:
         - 'NO LINKAGE'
       dataUseRestriction:
         title: Data Use restrictions
-        desription: "Please indicate if there are any additional conditions set for use if any. Please ensure that these restrictions are documented in access rights information. Note: this value will be used as terms for all datasets submitted by the organisation. However, there will be an opportunity to overwrite this value for each dataset."
+        desription: "Please indicate if there are any additional conditions set for use if any. 
+          Please ensure that these restrictions are documented in access rights information. 
+          Note: this value will be used as terms for all datasets submitted by the organisation. 
+          However, there will be an opportunity to overwrite this value for each dataset."
         type: string
         enum:
         - 'COLLABORATION REQUIRED'
