@@ -158,101 +158,12 @@ properties:
         type: string
         format: uri
   
-  purpose:
-    "$id": "#/properties/purpose"
-    "$comment": 'FIXME: Mandatory, but cardinality 0:* Possibly deprecate.'
-    title: The purpose schema
-    description: Pleases indicate the purpose(s) that the dataset was collected. Multiple
-      purposes may be provided
-    anyOf:
-    - type: string
-      enum:
-      - Study
-      - Disease Registry
-      - Trial
-      - Care
-      - Audit
-      - Administrative
-      - Financial
-    - type: array
-      items:
-        type: string
-        enum:
-        - Study
-        - Disease Registry
-        - Trial
-        - Care
-        - Audit
-        - Administrative
-        - Financial
-  
-  source:
-    "$id": "#/properties/source"
-    "$comment": 'FIXME: Mandatory, but cardinality 0:* Possibly deprecate.'
-    title: The source schema
-    description: Pleases indicate the source(s) that the dataset was collected. Multiple
-      source(s) may be provided
-    anyOf:
-    - type: string
-      enum:
-      - Epr
-      - Electronic Survey
-      - Lims
-      - Paper Based
-      - Freetext Nlp
-      - Machine Generated
-    - type: array
-      items:
-        type: string
-        enum:
-        - Epr
-        - Electronic Survey
-        - Lims
-        - Paper Based
-        - Freetext Nlp
-        - Machine Generated
-  
-  
-  setting:
-    "$id": "#/properties/setting"
-    "$comment": 'FIXME: Mandatory, but cardinality 0:*. Possibly deprecate.'
-    title: The setting schema
-    description: Pleases indicate the setting(s) where data was collected. Multiple
-      settings may be provided.
-    anyOf:
-    - type: string
-      enum:
-      - Clinic
-      - Primary Care
-      - Accident and Emergency
-      - Outpatients
-      - In-Patients
-      - Services
-      - Community
-      - Home
-      - Private
-      - Pharmacy
-    - type: array
-      items:
-        type: string
-        enum:
-        - Clinic
-        - Primary Care
-        - Accident and Emergency
-        - Outpatients
-        - In-Patients
-        - Services
-        - Community
-        - Home
-        - Private
-        - Pharmacy
-  
-  releaseDate:
-    "$id": "#/properties/releaseDate"
-    title: The releaseDate schema
-    description: An explanation about the purpose of this instance.
-    type: string
-    format: date-time
+  provenance:
+    title: Provenance
+    description: Provenance information allows researchers to understand data
+      within the context of its origins and can be an indicator of quality, authenticity
+      and timeliness.
+    "$ref": "#/definitions/provenance"
   
   accessRequestCost:
     "$id": "#/properties/accessRequestCost"
@@ -597,6 +508,177 @@ definitions:
     type: string
     pattern: "\\d{1,3}-\\d{1,3}"
   
+  provenance:
+    required:
+    - origin
+    - temporal
+    type: object
+    properties:
+      origin:
+        title: Origin
+        description: Indicators of the origin of the data.
+        "$ref": "#/definitions/origin"
+      temporal:
+        title: Temporal
+        description: Information indicative of temporal provenance.
+        "$ref": "#/definitions/temporal"
+  purpose:
+    type: string
+    enum:
+    - 'STUDY'
+    - 'DISEASE REGISTRY'
+    - 'TRIAL'
+    - 'CARE'
+    - 'AUDIT'
+    - 'ADMINISTRATIVE'
+    - 'FINANCIAL'
+    - 'OTHER'
+  
+  source:
+    type: string
+    enum:
+    - 'EPR'
+    - 'ELECTRONIC SURVEY'
+    - 'LIMS'
+    - 'PAPER BASED'
+    - 'FREETEXT NLP'
+    - 'MACHINE GENERATED'
+    - 'OTHER'
+  
+  setting:
+    type: string
+    enum:
+    - 'CLINIC'
+    - 'PRIMARY CARE'
+    - 'ACCIDENT AND EMERGENCY'
+    - 'OUTPATIENTS'
+    - 'IN-PATIENTS'
+    - 'SERVICES'
+    - 'COMMUNITY'
+    - 'HOME'
+    - 'PRIVATE'
+    - 'PHARMACY'
+    - 'OTHER'
+  
+  origin:
+    type: object
+    properties:
+      purpose:
+        title: Purpose
+        "$comment": https://ddialliance.org/Specification/DDI-Lifecycle/3.3/XMLSchema/FieldLevelDocumentation/
+        description: Pleases indicate the purpose(s) that the dataset was collected. Multiple
+            purposes may be provided
+        type: array
+        items:
+          "$ref": "#/definitions/purpose"
+        minItems: 0
+      source:
+        title: Source
+        "$comment": https://dublincore.org/specifications/dublin-core/dcmi-terms/#source
+        description: Pleases indicate the source of the data extraction. Multiple
+            sources may be provided
+        type: array
+        items:
+          "$ref": "#/definitions/source"
+        minItems: 0
+      modeOfDateCollection:
+        title: Setting
+        "$comment": https://ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/
+        description: Pleases indicate the setting(s) where data was collected. Multiple
+            settings may be provided
+        type: array
+        items:
+          "$ref": "#/definitions/setting"
+        minItems: 0
+  
+  periodicity:
+    type: string
+    enum:
+    - 'STATIC'
+    - 'ANNUAL'
+    - 'BIENNIAL'
+    - 'QUARTERLY'
+    - 'BIMONTHLY'
+    - 'MONTHLY'
+    - 'BIWEEKLY'
+    - 'WEEKLY'
+    - 'SEMIWEEKLY'
+    - 'DAILY'
+    - 'IRREGULAR'
+    - 'CONTINUOUS'
+  timelag:
+    type: string
+    enum:
+    - '>1 WEEK'
+    - '1-2 WEEKS'
+    - '2-4 WEEKS'
+    - '1-2 MONTHS'
+    - '2-6 MONTHS'
+    - '>6 MONTHS'
+    - 'VARIABLE'
+    - 'NOT APPLICABLE'
+  
+  temporal:
+    required:
+    - accrualPeriodicity
+    - timeLag
+    - startDate
+    type: object
+    properties:
+      accrualPeriodicity:
+        title: Periodicity
+        "$comment": dct:accrualPeriodicity
+        description: 'Please indicate the frequency of publishing. If a dataset is
+          published regularly please choose a publishing periodicity from the constrained
+          list and indicate the next release date. When the release date becomes historical,
+          a new release date will be calculated based on the publishing periodicity.
+          If a dataset has been published and will remain static please indicate that
+          it is static and indicated when it was released. If a dataset is released
+          on an irregular basis or “on-demand” please indicate that it is Irregular
+          and leave release date as null. If a dataset can be published in real-time
+          or near-real-time please indicate that it is continuous and leave release
+          date as null. Notes: see https://www.dublincore.org/specifications/dublin-core/collection-description/frequency/'
+        "$ref": "#/definitions/periodicity"
+        default: ''
+      timeLag:
+        title: Time Lag
+        "$comment": No standard identified
+        description: Please indicate the typical time-lag between an event and the
+          data for that event appearing in the dataset
+        "$ref": "#/definitions/timelag"
+      distributionReleaseDate:
+        title: Release Date
+        "$comment": dcat:distribution_release_date
+        description: 'Date of the latest release of the dataset. If this is a regular
+          release i.e. quarterly, or this is a static dataset please complete this
+          alongside Periodicity. If this is Irregular or Continuously released please
+          leave this blank. Notes: Periodicity and release date will be used to determine
+          when the next release is expected. i.e. the next release date can then be
+          calculated automatically. E.g. if the release date is documented as 01/01/2020
+          and it is now 20/04/2020 and there is a quarterly release schedule, the
+          latest release will be calculated as 01/04/2020.'
+        type: string
+        format: date-time
+      startDate:
+        title: Start Date
+        "$comment": dcat:startDate
+        description: The start of the time period that the dataset provides coverage
+          for. If there are multiple cohorts in the dataset with varying start dates,
+          please provide the earliest date and use the description or the media attribute
+          to provide more information.
+        type: string
+        format: date-time
+      endDate:
+        title: End Date
+        "$comment": dcat:endDate
+        description: The end of the time period that the dataset provides coverage
+          for. If the dataset is “Continuous” and has no known end date, please leave
+          blank. If there are multiple cohorts in the dataset with varying end dates,
+          please provide the latest date and use the description or the media attribute
+          to provide more information.
+        type: string
+        format: date-time
+  
   controlledVocabulary:
     type: string
     enum:
@@ -679,19 +761,3 @@ definitions:
     - 'URINE'
     - 'WHOLE BLOOD'
     - 'AVAILABILITY TO BE CONFIRMED'
-  
-  periodicity:
-    type: string
-    enum:
-    - STATIC
-    - ANNUAL
-    - BIENNIAL
-    - QUARTERLY
-    - BIMONTHLY
-    - MONTHLY
-    - BIWEEKLY
-    - WEEKLY
-    - SEMIWEEKLY
-    - DAILY
-    - IRREGULAR
-    - CONTINUOUS
