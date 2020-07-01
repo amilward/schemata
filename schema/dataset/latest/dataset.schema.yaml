@@ -589,6 +589,16 @@ properties:
       pattern: "^10.\\d{4,9}/[-._;()/:a-zA-Z0-9]+$"
 
 definitions:
+  eightyCharacters:
+    type: string
+    minLength: 2
+    maxLength: 80
+  
+  longDescription:
+    type: string
+    minLength: 5
+    maxLength: 5000
+  
   commaSeparatedValues:
     type: string
     pattern: "([^,]+)"
@@ -596,6 +606,41 @@ definitions:
   numericRange:
     type: string
     pattern: "\\d{1,3}-\\d{1,3}"
+  
+  organisation:
+    required:
+    - name
+    - logo
+    - about
+    - contactPoint
+    type: object
+    title: Organisation Metadata
+    description: Describes an organisation for purposes of discovery and identification.
+    properties:
+      id:
+        title: Organisation Identifier
+        description: "Please provide a Grid.ac identifier (see https://www.grid.ac/institutes) for your organisation. If your organisation does not have a Grid.ac identifier please use the “suggest and institute” function here: https://www.grid.ac/institutes#"
+        type: string
+        format: uri
+      name:
+        title: Organisation Name
+        description: Name of the organisation
+        "$ref": "#/definitions/eightyCharacters"
+      logo:
+        title: Organisation Logo
+        description: Please provide a logo associated with the Gateway Organisation using a valid URL. The following formats will be accepted .jpg, .png or .svg.
+        type: string
+        format: uri
+      about:
+        title: Organisation Description
+        description: Please provide a URL that describes the organisation.
+        type: string
+        format: uri
+      contactPoint:
+        title: Organisation Contact Point
+        description: An explanation about the purpose of this instance.
+        type: string
+        format: email
   
   controlledVocabulary:
     type: string
