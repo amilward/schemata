@@ -605,7 +605,7 @@ definitions:
     - 'DAILY'
     - 'IRREGULAR'
     - 'CONTINUOUS'
-  timelag:
+  timeLag:
     type: string
     enum:
     - '>1 WEEK'
@@ -644,7 +644,7 @@ definitions:
         "$comment": No standard identified
         description: Please indicate the typical time-lag between an event and the
           data for that event appearing in the dataset
-        "$ref": "#/definitions/timelag"
+        "$ref": "#/definitions/timeLag"
       distributionReleaseDate:
         title: Release Date
         "$comment": dcat:distribution_release_date
