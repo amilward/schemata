@@ -11,6 +11,7 @@ required:
 - abstract
 - publisher
 - contactPoint
+- documentation
 - accessRights
 - accessRequestCost
 - dataController
@@ -100,6 +101,15 @@ properties:
     type: string
     format: email
   
+  documentation:
+    "$id": "#/properties/documentation"
+    title: The contactPoint schema
+    description: Documentation can include a rich text description of the dataset
+      or links to media such as documents, images, presentations, videos or links
+      to data dictionaries, profiles or dashboards. Organisations are required
+      to confirm that they have permission to distribute any additional media.
+    "$ref": "#/definitions/documentation"
+  
   accessRights:
     "$id": "#/properties/accessRights"
     "$comment": 'FIXME: Conforms to spec, but this SHOULD be an array or URIs as cardinality
@@ -113,44 +123,6 @@ properties:
     anyOf:
     - type: string
       pattern: "^In Progress$"
-    - type: string
-      format: uri
-    - type: array
-      items:
-        type: string
-        format: uri
-  
-  group:
-    "$id": "#/properties/group"
-    "$comment": Conforms to spec, but this MAY be an array of groups
-    title: The group schema
-    description: An explanation about the purpose of this instance.
-    type: string
-  
-  description:
-    "$id": "#/properties/description"
-    title: The description schema
-    description: A free-text account of the record. An html account of the data that
-      provides context and scope of the data (limited to 50,000 characters) and/or
-      a resolvable URL that describes the dataset.
-    anyOf:
-    - type: string
-      minLength: 5
-      maxLength: 50000
-    - type: string
-      format: uri
-  
-  media:
-    "$id": "#/properties/media"
-    "$comment": 'FIXME: Conforms to spec, but this SHOULD to be an array of URIs as
-      cardinality 0:*'
-    title: The media schema
-    description: Please provide any media associated with the Gateway Organisation
-      using a valid URI. This is an opportunity to provide additional context that
-      could be useful for researchers wanting to undestand more about the dataset
-      and its relevance to their research question. The following formats will be
-      accepted .jpg, .png or .svg, .pdf, .xslx or .docx.
-    anyOf:
     - type: string
       format: uri
     - type: array
@@ -596,6 +568,61 @@ definitions:
   numericRange:
     type: string
     pattern: "\\d{1,3}-\\d{1,3}"
+  
+  shortDescription:
+    type: string
+    minLength: 5
+    maxLength: 3000
+  
+  documentation:
+    type: object
+    required:
+    - description
+    - isPartOf
+    properties:
+      description:
+        title: Description
+        "$comment": dc:description
+        description: 'An HTML account of the data that provides context and scope
+          of the data, limited to 3000 characters (1 Page), and/or a resolvable URL
+          that describes the dataset. Additional information can be recorded and included
+          using media. Notes: A WYSIWYG editor will be available through the onboarding
+          portal.'
+        "$ref": "#/definitions/shortDescription"
+      isPartOf:
+        title: Group
+        "$comment": "\thttps://schema.org/isPartOf NOTE: we may make Groups first
+          class citizens so the are navigable"
+        description: Please complete only if the dataset is part of a group or family
+          of datasets i.e. Hospital Episode Statistics has several constituents.
+        type: string
+        default: Not Applicable
+        examples:
+        - Hospital Episodes Statistics datasets (A&E, APC, OP, AC MSDS).
+      additionalDocumentation:
+        title: Documentation
+        "$comment": https://schema.org/documentation
+        description: Please provide a link to any additional technical documentation,
+          such as data dictionaries, data catalogues, data profiles, summary dashboards
+          or other technical assets that describe the dataset.
+        type: string
+        format: uri
+      associatedMedia:
+        title: Associated Media
+        "$comment": https://schema.org/associatedMedia
+        description: 'Please provide any media associated with the Gateway Organisation
+            using a valid URI for the content. This is an opportunity to provide additional
+            context that could be useful for researchers wanting to understand more
+            about the dataset and its relevance to their research question. The following
+            formats will be accepted .jpg, .png or .svg, .pdf, .xslx or .docx. Note:
+            media asset can be hosted by the organisation or uploaded using the onboarding
+            portal.'
+        type: array
+        items:
+          type: string
+          format: uri
+        examples:
+        - PDF Document that describes study protocol
   
   controlledVocabulary:
     type: string
