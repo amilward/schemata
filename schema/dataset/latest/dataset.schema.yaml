@@ -90,7 +90,6 @@ properties:
       UK Gateway organisation but coordinate activities across a number of data publishers
       i.e. Cambridge Blood and Stem Cell Biobank.
     allOf:
-    - "$ref": "#/definitions/ogranisation"
     - "$ref": "#/definitions/publisher"
   
   contactPoint:
@@ -645,99 +644,101 @@ definitions:
         type: string
         format: email
   
-  publisherOrganisation:
+  publisher:
   type: object
   required:
   - membership
   - accessRights
   - dataUseLimitation
   - dataUseRestriction
-  properties:
-    membership:
-      title: Organisation Membership
-      description: Please indicate if the organisation is an Alliance Member or a Hub.
-      type: string
-      enum:
-      - HUB
-      - ALLIANCE
-      - OTHER
-    accessRights:
-      title: Organisation Default Access Rights
-      description: The URL of a webpage where the data access request process and/or
-        guidance is provided. If there is more than one access process i.e. industry
-        vs academic please provide both. If such a resource or the underlying process
-        doesn’t exist, please provide “In Progress”, until both the process and the
-        documentation are ready.
-      anyOf:
-      - type: string
-        pattern: "^In Progress$"
-      - type: string
-        format: uri
-      - type: array
-        items:
-          type: string
+  allOf:
+  - "$ref": "#/definitions/organisation"
+  - properties:
+      membership:
+        title: Organisation Membership
+        description: Please indicate if the organisation is an Alliance Member or a Hub.
+        type: string
+        enum:
+        - HUB
+        - ALLIANCE
+        - OTHER
+      accessRights:
+        title: Organisation Default Access Rights
+        description: The URL of a webpage where the data access request process and/or
+          guidance is provided. If there is more than one access process i.e. industry
+          vs academic please provide both. If such a resource or the underlying process
+          doesn’t exist, please provide “In Progress”, until both the process and the
+          documentation are ready.
+        anyOf:
+        - type: string
+          pattern: "^In Progress$"
+        - type: string
           format: uri
-      deliveryLeadTime:
-        title: Delivery Lead Time
-        description: "Please provide an indication of the typical processing times based 
-          on the types of requests typically received. Note: This value will be used as 
-          default access request duration for all datasets submitted by the organisation. 
-          However, there will be the opportunity to overwrite his value for each dataset."
-        type: string
-        enum:
-        - '>1 WEEK'
-        - '1-2 WEEKS'
-        - '2-4 WEEKS'
-        - '1-2 MONTHS'
-        - '2-6 MONTHS'
-        - '>6 MONTHS'
-        - 'OTHER'
-      accessService:
-        title: Organisation Access Service
-        description: "Please provide a brief description of the data access environment 
-          that is currently available to researchers. If no environment is currently 
-          available, please indicate the current plans and timelines when the data will be 
-          made available through an access environment or process. Note: This value will be 
-          used as default access environment for all datasets submitted by the organisation. 
-          However, there will be the opportunity to overwrite his value for each dataset"
-        "$ref": "#/definitions/longDescription"
-      dataUseLimitation:
-        title: Data Use Limitation
-        description: "Please provide an indication of consent permissions for datasets and/or 
-          materials, and relates to the purposes for which datasets and/or material might be 
-          removed, stored or used. Notes: where there are existing data-sharing arrangements 
-          such as the HDR UK HUB data sharing agreement or the NIHR HIC data sharing agreement 
-          this should be indicated within access rights. This value will be used as terms for 
-          all datasets submitted by the organisation. However, there will be the opportunity 
-          to overwrite this value for each dataset."
-        type: string
-        enum:
-        - 'GENERAL RESEARCH USE'
-        - 'GENETIC STUDIES ONLY'
-        - 'NO GENERAL METHODS RESEARCH'
-        - 'NO RESTRICTION'
-        - 'RESEARCH SPECIFIC RESTRICTIONS'
-        - 'RESEARCH USE ONLY'
-        - 'NO LINKAGE'
-      dataUseRestriction:
-        title: Data Use restrictions
-        desription: "Please indicate if there are any additional conditions set for use if any. 
-          Please ensure that these restrictions are documented in access rights information. 
-          Note: this value will be used as terms for all datasets submitted by the organisation. 
-          However, there will be an opportunity to overwrite this value for each dataset."
-        type: string
-        enum:
-        - 'COLLABORATION REQUIRED'
-        - 'ETHICS APPROVAL REQUIRED'
-        - 'GEOGRAPHICAL RESTRICTIONS'
-        - 'INSTITUTION SPECIFIC RESTRICTIONS'
-        - 'NOT FOR PROFIT USE'
-        - 'PROJECT SPECIFIC RESTRICTIONS'
-        - 'PUBLICATION MORATORIUM'
-        - 'PUBLICATION REQUIRED'
-        - 'RETURN TO DATABASE OR RESOURCE'
-        - 'TIME LIMIT ON USE'
-        - 'USER SPECIFIC RESTRICTION'
+        - type: array
+          items:
+            type: string
+            format: uri
+        deliveryLeadTime:
+          title: Delivery Lead Time
+          description: "Please provide an indication of the typical processing times based 
+            on the types of requests typically received. Note: This value will be used as 
+            default access request duration for all datasets submitted by the organisation. 
+            However, there will be the opportunity to overwrite his value for each dataset."
+          type: string
+          enum:
+          - '>1 WEEK'
+          - '1-2 WEEKS'
+          - '2-4 WEEKS'
+          - '1-2 MONTHS'
+          - '2-6 MONTHS'
+          - '>6 MONTHS'
+          - 'OTHER'
+        accessService:
+          title: Organisation Access Service
+          description: "Please provide a brief description of the data access environment 
+            that is currently available to researchers. If no environment is currently 
+            available, please indicate the current plans and timelines when the data will be 
+            made available through an access environment or process. Note: This value will be 
+            used as default access environment for all datasets submitted by the organisation. 
+            However, there will be the opportunity to overwrite his value for each dataset"
+          "$ref": "#/definitions/longDescription"
+        dataUseLimitation:
+          title: Data Use Limitation
+          description: "Please provide an indication of consent permissions for datasets and/or 
+            materials, and relates to the purposes for which datasets and/or material might be 
+            removed, stored or used. Notes: where there are existing data-sharing arrangements 
+            such as the HDR UK HUB data sharing agreement or the NIHR HIC data sharing agreement 
+            this should be indicated within access rights. This value will be used as terms for 
+            all datasets submitted by the organisation. However, there will be the opportunity 
+            to overwrite this value for each dataset."
+          type: string
+          enum:
+          - 'GENERAL RESEARCH USE'
+          - 'GENETIC STUDIES ONLY'
+          - 'NO GENERAL METHODS RESEARCH'
+          - 'NO RESTRICTION'
+          - 'RESEARCH SPECIFIC RESTRICTIONS'
+          - 'RESEARCH USE ONLY'
+          - 'NO LINKAGE'
+        dataUseRestriction:
+          title: Data Use restrictions
+          desription: "Please indicate if there are any additional conditions set for use if any. 
+            Please ensure that these restrictions are documented in access rights information. 
+            Note: this value will be used as terms for all datasets submitted by the organisation. 
+            However, there will be an opportunity to overwrite this value for each dataset."
+          type: string
+          enum:
+          - 'COLLABORATION REQUIRED'
+          - 'ETHICS APPROVAL REQUIRED'
+          - 'GEOGRAPHICAL RESTRICTIONS'
+          - 'INSTITUTION SPECIFIC RESTRICTIONS'
+          - 'NOT FOR PROFIT USE'
+          - 'PROJECT SPECIFIC RESTRICTIONS'
+          - 'PUBLICATION MORATORIUM'
+          - 'PUBLICATION REQUIRED'
+          - 'RETURN TO DATABASE OR RESOURCE'
+          - 'TIME LIMIT ON USE'
+          - 'USER SPECIFIC RESTRICTION'
   
   controlledVocabulary:
     type: string
