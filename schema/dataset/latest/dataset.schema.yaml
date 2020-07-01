@@ -15,8 +15,7 @@ required:
 - accessRequestCost
 - dataController
 - license
-- periodicity
-- datasetStartDate
+- provenance
 - jurisdiction
 - populationType
 - statisticalPopulation
