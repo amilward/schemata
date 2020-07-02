@@ -9,6 +9,8 @@ required:
 - id
 - version
 - revisions
+- issued
+- modified
 - title
 - abstract
 - publisher
@@ -56,6 +58,22 @@ properties:
     title: Dataset Revisions
     description: Revisions of Dataset metadata
     "$ref": "#/definitions/revisions"
+  
+  issued:
+    "$id": "#/properties/issued"
+    title: Creation Date
+    "$comment": 'dcat:issued'
+    description: Dataset Metadata Creation Date
+    type: string
+    format: date-time
+  
+  modified:
+    "$id": "#/properties/modified"
+    title: Modification Date
+    "$comment": 'dcat:modified'
+    description: Dataset Metadata Creation Date
+    type: string
+    format: date-time
   
   identifier:
     "$id": "#/properties/identifier"
