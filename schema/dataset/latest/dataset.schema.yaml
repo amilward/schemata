@@ -580,7 +580,7 @@ definitions:
         items:
           "$ref": "#/definitions/source"
         minItems: 0
-      modeOfDateCollection:
+      modeOfDataCollection:
         title: Setting
         "$comment": https://ddialliance.org/Specification/DDI-Lifecycle/3.2/XMLSchema/FieldLevelDocumentation/
         description: Pleases indicate the setting(s) where data was collected. Multiple
