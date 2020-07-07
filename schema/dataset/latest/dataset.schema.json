@@ -5,42 +5,64 @@
   "title": "HDR UK Dataset",
   "description": "HDR UK Dataset Schema",
   "required": [
-    "id",
-    "identifier",
+    "summary",
+    "identifiers",
     "title",
     "abstract",
     "publisher",
     "contactPoint",
-    "shortDescription",
+    "description",
     "physicalSampleAvailability",
     "accessRequestCost",
     "dataController",
-    "license",
     "accrualPeriodicity",
+    "timeLag",
     "startDate",
     "accessRights",
     "jurisdiction",
-    "populationType",
-    "statisticalPopulation",
     "keywords",
     "conformsTo",
     "language",
     "format",
-    "creator",
-    "usageRestrictions"
+    "observedNode",
+    "measuredValue",
+    "observationDate",
+    "measuredProperty"
   ],
   "additionalProperties": true,
   "properties": {
+    "version": {
+      "$id": "#/properties/version",
+      "title": "Dataset Version",
+      "description": "Dataset metadata version",
+      "$ref": "#/definitions/semver",
+      "examples": [
+        "1.1.0"
+      ]
+    },
+    "revisions": {
+      "$id": "#/properties/revisions",
+      "title": "Dataset Revisions",
+      "description": "Revisions of Dataset metadata",
+      "$ref": "#/definitions/revisions"
+    },
+    "issued": {
+      "$id": "#/properties/issued",
+      "title": "Creation Date",
+      "$comment": "dcat:issued",
+      "description": "Dataset Metadata Creation Date",
+      "type": "string",
+      "format": "date-time"
+    },
+    "modified": {
+      "$id": "#/properties/modified",
+      "title": "Modification Date",
+      "$comment": "dcat:modified",
+      "description": "Dataset Metadata Creation Date",
+      "type": "string",
+      "format": "date-time"
+    },
     "summary": {
-      "id": {
-        "$id": "#/properties/summary/id",
-        "type": "string",
-        "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
-        "minLength": 36,
-        "maxLength": 36,
-        "title": "Dataset identifier",
-        "description": "Dataset identifier"
-      },
       "identifier": {
         "$id": "#/properties/summary/identifier",
         "$comment": "FIX SPEC: Conforms to spec, but this MAY be an array of strings. FIXME: Rename to local identifier",
@@ -58,13 +80,13 @@
         "title": "Local dataset identifier",
         "description": "Local dataset identifier"
       },
-      "name": {
-        "$id": "#/properties/summary/name",
+      "title": {
+        "$id": "#/properties/summary/title",
         "$comment": "using name from schema.org, title is reserved word in json schema",
         "type": "string",
         "minLength": 2,
         "maxLength": 80,
-        "title": "title",
+        "title": "name",
         "description": "Name of the dataset limited to 80 characters. It should provide a short description of the dataset and be unique across the gateway. If your title is not unique, please add a prefix with your organisation name or identifier to differentiate it from other datasets within the Gateway. Please avoid acronyms wherever possible. Good titles should summarise the content of the dataset and if relevant, the region the dataset covers."
       },
       "abstract": {
@@ -131,8 +153,8 @@
       }
     },
     "documentation": {
-      "shortDescription": {
-        "$id": "#/properties/documentation/shortDescription",
+      "description": {
+        "$id": "#/properties/documentation/description",
         "type": "string",
         "minLength": 5,
         "maxLength": 3000,
@@ -776,14 +798,14 @@
           {
             "type": "string",
             "format": "uri",
-            "pattern": '((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)'
+            "pattern": "((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)"
           },
           {
             "type": "array",
             "items": {
               "type": "string",
               "format": "uri",
-              "pattern": '((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)'
+              "pattern": "((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)"
             }
           },
           {
@@ -794,7 +816,7 @@
             ]
           }
         ],
-        "title": "The Qualified Relation schema",
+        "title": "Linked Datasets",
         "description": "If applicable, please provide the DOI of other datasets that have previously been linked to this dataset and their availability. If no DOI is available, please provide the title of the datasets that can be linked, where possible using the same title of a dataset previously onboarded."
       },
       "derivation": {
@@ -812,6 +834,171 @@
         "pattern": "((([A-Za-z]{3,9}:(?:\\/\\/)?)(?:[-;:&=\\+\\$,\\w]+@)?[A-Za-z0-9.-]+(:[0-9]+)?|(?:www.|[-;:&=\\+\\$,\\w]+@)[A-Za-z0-9.-]+)((?:\\/[\\+~%\\/.\\w-_]*)?\\??(?:[-\\+=&;%@.\\w_]*)#?(?:[\\w]*))?)",
         "description": "The URL of any analysis tools or models that have been created for this dataset and are available for further use. Multiple tools may be provided."
       }
+    }
+  },
+  "definitions": {
+    "semver": {
+      "title": "Semantic Version",
+      "description": "Semantic versioning of the using a dotted numeric format MAJOR.MINOR.PATCH",
+      "type": "string",
+      "pattern": "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$"
+    },
+    "revisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "version",
+          "url"
+        ],
+        "properties": {
+          "version": {
+            "description": "Semantic Version",
+            "$ref": "#/definitions/semver"
+          },
+          "url": {
+            "description": "URL endpoint to obtain the version",
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "uuidv4": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$",
+      "minLength": 36,
+      "maxLength": 36
+    },
+    "eightyCharacters": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 80
+    },
+    "abstractText": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 255
+    },
+    "emailAddress": {
+      "type": "string",
+      "format": "email"
+    },
+    "commaSeparatedValues": {
+      "type": "string",
+      "pattern": "([^,]+)"
+    },
+    "numericRange": {
+      "type": "string",
+      "pattern": "\\d{1,3}-\\d{1,3}"
+    },
+    "doi": {
+      "type": "string",
+      "pattern": "^10.\\d{4,9}/[-._;()/:a-zA-Z0-9]+$"
+    },
+    "controlledVocabulary": {
+      "type": "string",
+      "enum": [
+        "LOCAL",
+        "OPCS4",
+        "READ",
+        "SNOMED CT",
+        "SNOMED RT",
+        "DM+D",
+        "NHS NATIONAL CODES",
+        "ODS",
+        "LOINC",
+        "ICD10",
+        "ICD10CM",
+        "ICD10PCS",
+        "ICD9CM",
+        "ICD9",
+        "ICDO3",
+        "AMT",
+        "APC",
+        "ATC",
+        "CIEL",
+        "HPO",
+        "CPT4",
+        "DPD",
+        "DRG",
+        "HEMONC",
+        "JMDC",
+        "KCD7",
+        "MULTUM",
+        "NAACCR",
+        "NDC",
+        "NDFRT",
+        "OXMIS",
+        "RXNORM",
+        "RXNORM EXTENSION",
+        "SPL",
+        "OTHER"
+      ]
+    },
+    "conformsTo": {
+      "type": "string",
+      "enum": [
+        "HL7 FHIR",
+        "HL7 V2",
+        "HL7 CDA",
+        "HL7 CCOW",
+        "LOINC",
+        "DICOM",
+        "I2B2",
+        "IHE",
+        "OMOP",
+        "OPENEHR",
+        "SENTINEL",
+        "PCORNET",
+        "CDISC",
+        "LOCAL",
+        "OTHER"
+      ]
+    },
+    "physicalSampleAvailability": {
+      "type": "string",
+      "enum": [
+        "NOT AVAILABLE",
+        "BONE MARROW",
+        "CANCER CELL LINES",
+        "CORE BIOPSY",
+        "CDNA/MRNA",
+        "DNA",
+        "FAECES",
+        "IMMORTALIZED CELL LINES",
+        "MICRORNA",
+        "PERIPHERAL BLOOD CELLS",
+        "PLASMA",
+        "PM TISSUE",
+        "PRIMARY CELLS",
+        "RNA",
+        "SALIVA",
+        "SERUM",
+        "SWABS",
+        "TISSUE",
+        "URINE",
+        "WHOLE BLOOD",
+        "AVAILABILITY TO BE CONFIRMED"
+      ]
+    },
+    "periodicity": {
+      "type": "string",
+      "enum": [
+        "STATIC",
+        "BIENNIAL",
+        "ANNUAL",
+        "BIANNUAL",
+        "QUARTERLY",
+        "BIMONTHLY",
+        "MONTHLY",
+        "BIWEEKLY",
+        "WEEKLY",
+        "SEMIWEEKLY",
+        "DAILY",
+        "IRREGULAR",
+        "CONTINUOUS"
+      ]
     }
   }
 }

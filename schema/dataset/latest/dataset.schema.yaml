@@ -4,40 +4,63 @@ type: object
 title: HDR UK Dataset
 description: HDR UK Dataset Schema
 required:
-- id
-- identifier
+- summary
+- identifiers
 - title
-- abstract
+- abstract  
 - publisher
 - contactPoint
-- shortDescription
+- description
 - physicalSampleAvailability
 - accessRequestCost
 - dataController
-- license
 - accrualPeriodicity
+- timeLag
 - startDate
 - accessRights
 - jurisdiction
-- populationType
-- statisticalPopulation
 - keywords
 - conformsTo
 - language
 - format
-- creator
-- usageRestrictions
+- observedNode
+- measuredValue
+- observationDate
+- measuredProperty
+
 additionalProperties: true
 properties:
+  version:
+    "$id": "#/properties/version"
+    title: Dataset Version
+    description: Dataset metadata version
+    "$ref": "#/definitions/semver"
+    examples:
+    - "1.1.0"
+  
+  revisions:
+    "$id": "#/properties/revisions"
+    title: Dataset Revisions
+    description: Revisions of Dataset metadata
+    "$ref": "#/definitions/revisions"
+  
+  issued:
+    "$id": "#/properties/issued"
+    title: Creation Date
+    "$comment": 'dcat:issued'
+    description: Dataset Metadata Creation Date
+    type: string
+    format: date-time
+  
+  modified:
+    "$id": "#/properties/modified"
+    title: Modification Date
+    "$comment": 'dcat:modified'
+    description: Dataset Metadata Creation Date
+    type: string
+    format: date-time
+    
   summary:
-    id:
-      "$id": "#/properties/summary/id"
-      type: string
-      pattern: "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
-      minLength: 36
-      maxLength: 36
-      title: Dataset identifier
-      description: Dataset identifier
     identifier:
       "$id": "#/properties/summary/identifier"
       "$comment": 'FIX SPEC: Conforms to spec, but this MAY be an array of strings.
@@ -49,13 +72,13 @@ properties:
           type: string
       title: Local dataset identifier
       description: Local dataset identifier
-    name:
-      "$id": "#/properties/summary/name"
+    title:
+      "$id": "#/properties/summary/title"
       "$comment": 'using name from schema.org, title is reserved word in json schema'
       type: string
       minLength: 2
       maxLength: 80
-      title: title
+      title: name
       description: Name of the dataset limited to 80 characters. It should provide a
         short description of the dataset and be unique across the gateway. If your title
         is not unique, please add a prefix with your organisation name or identifier
@@ -120,8 +143,8 @@ properties:
             Identifier (DOI) or be working towards obtaining one. If a DOI is available,
             please provide the DOI.         
   documentation:
-    shortDescription:
-      "$id": "#/properties/documentation/shortDescription"
+    description:
+      "$id": "#/properties/documentation/description"
       type: string
       minLength: 5
       maxLength: 3000
@@ -693,6 +716,28 @@ properties:
         description:  The URL of any analysis tools or models that have been created for this dataset and are available for further use. Multiple tools may be provided.
 
 definitions:
+  semver:
+    title: Semantic Version
+    description: Semantic versioning of the using a dotted numeric format 
+      MAJOR.MINOR.PATCH
+    type: string
+    pattern: "^([0-9]+)\\.([0-9]+)\\.([0-9]+)$"
+  
+  revisions:
+    type: array
+    items:
+      type: object
+      required:
+      - version
+      - url
+      properties:
+        version:
+          description: Semantic Version
+          "$ref": "#/definitions/semver"
+        url:
+          description: URL endpoint to obtain the version
+          type: string
+          format: uri
   uuidv4:
     type: string
     pattern: "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
