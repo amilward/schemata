@@ -483,6 +483,7 @@ properties:
       a description that disambiguates the population type.
     type: string
     
+  
   observations:
     observation:
       observedNode:
@@ -519,8 +520,8 @@ properties:
         "$id": "#/properties/observations/observation/observationDate"
         type: string
         title: The Measured Propery schema
-        description: Initially this will be defaulted to "Count"  
-
+        description: Initially this will be defaulted to "Count"
+    
   
   ageBand:
     "$id": "#/properties/ageBand"
