@@ -3,6 +3,7 @@
 type: object
 title: HDR UK Dataset
 description: HDR UK Dataset Schema
+
 required:
 - id
 - identifiers
@@ -25,8 +26,11 @@ required:
 - language
 - format
 - creator
+- doi
 - usageRestrictions
+
 additionalProperties: true
+
 properties:
   summary:
     id:
@@ -103,8 +107,8 @@ properties:
       pattern: "[0-9a-zA-Z._\\-]+(,[0-9a-zA-Z.\\-_]+)*"
       title: The keywords schema
       description: An explanation about the purpose of this instance.
-    doiName:
-      "$id": "#/properties/summary/doiName"
+    doi:
+      "$id": "#/properties/summary/doi"
       anyOf:
       - type: string
         enum:
